@@ -30,12 +30,6 @@ spec:
         image: ghcr.io/scrogatl/doodle-hello:latest
         imagePullPolicy: Always
         env:
-        - name: HELLO_HOST
-          value: "hello"
-          # value: "hello.demo.internal"
-        - name: WORLD_HOST
-          value: "world"
-          # value: "world.demo.internal"
         - name: SHARD
           value: "blue"
         - name: PYTHONUNBUFFERED
