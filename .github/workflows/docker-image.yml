@@ -22,7 +22,7 @@ jobs:
           username: scrogatl
           password: ${{secrets.GITHUB_TOKEN}}      
 
-      - name: 'Build Inventory Image'
+      - name: 'Build'
         run: |
-          docker build . --tag ghcr.io/scrogatl/doodle-hello:latest
+          docker build . --tag ghcr.io/scrogatl/doodle-hello:latest --build-arg nr_key=${{ secrets.NR_KEY }}
           docker push ghcr.io/scrogatl/doodle-hello:latest
