@@ -22,4 +22,4 @@ ARG nr_key
 ENV NEW_RELIC_LICENSE_KEY=$nr_key
 ENV NEW_RELIC_APP_NAME=doodle-hello
 
-CMD flask run --host=0.0.0.0 -p 5001
+CMD newrelic-admin run-program flask run --host=0.0.0.0 -p 5001
