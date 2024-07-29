@@ -17,7 +17,7 @@ COPY hello/src/ /hello
 
 EXPOSE 5001
 
-ARG nr_key
+# ARG nr_key
 
 ENV NEW_RELIC_APP_NAME=doodle-hello
 
