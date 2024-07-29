@@ -17,8 +17,6 @@ COPY hello/src/ /hello
 
 EXPOSE 5001
 
-# ARG nr_key
-
 ENV NEW_RELIC_APP_NAME=doodle-hello
 
 CMD newrelic-admin run-program flask run --host=0.0.0.0 -p 5001
