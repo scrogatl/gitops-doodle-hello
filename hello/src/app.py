@@ -13,7 +13,7 @@ def hello_world():
     print("SHARD: " + shard)
     r = randrange(100)
     if r < 26:
-        return "Error", 500
+        return flask.abort("Internal Error", 500)
     else: 
         return "Hello (" + shard + ")" 
 
