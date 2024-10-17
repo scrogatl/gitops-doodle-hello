@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, abort
 from flask import request
 from time import sleep
 import os
@@ -13,7 +13,7 @@ def hello_world():
     print("SHARD: " + shard)
     r = randrange(100)
     if r < 26:
-        return flask.abort("Internal Error", 500)
+        abort(500)
     else: 
         return "Hello (" + shard + ")" 
 
