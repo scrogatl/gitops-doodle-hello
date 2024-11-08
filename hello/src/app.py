@@ -12,7 +12,7 @@ def hello_world():
     
     print("SHARD: " + shard)
     r = randrange(100)
-    if r < 26:
+    if r < 60:
         abort(500)
     else: 
         return "Hello (" + shard + ")" 
