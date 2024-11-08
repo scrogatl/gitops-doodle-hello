@@ -36,6 +36,8 @@ spec:
           value: "1"
         - name: NEW_RELIC_LICENSE_KEY
           value:  "{{ .Values.nr_key }}"
+        - name: DOODLE-VERSION
+          value: "V0.99.3"
         ports:
         - containerPort: 5001
           name: application
