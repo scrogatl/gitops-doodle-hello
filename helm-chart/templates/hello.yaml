@@ -37,7 +37,9 @@ spec:
         - name: NEW_RELIC_LICENSE_KEY
           value:  "{{ .Values.nr_key }}"
         - name: DOODLE-VERSION
-          value: "V0.99.3"
+          value: "V0.99.4"
+        - name: ERROR_THRESH
+          value: "60"
         ports:
         - containerPort: 5001
           name: application
