@@ -9,19 +9,19 @@ import logging
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.INFO)
 
-
 app = Flask(__name__)
+
+shard       = os.environ.get('SHARD', "na")
+errorThresh = os.environ.get('ERROR_THRESH', "50")
 
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.info(timeString + " - [frontend: " + shard + "] - " + message)
 
-shard = os.environ.get('SHARD', "na")
-errorThresh = os.environ.get('ERROR_THRESH', "50")
 logit("errorThresh: " + errorThresh)
 
 @app.route("/")
-def hello_world():
+def hello():
     
     r = randrange(100)
     if r < int(errorThresh):
