@@ -18,13 +18,11 @@ def logit(message):
 
 shard = os.environ.get('SHARD', "na")
 errorThresh = os.environ.get('ERROR_THRESH', "50")
-
 logit("errorThresh: " + errorThresh)
 
 @app.route("/")
 def hello_world():
     
-    print("SHARD: " + shard)
     r = randrange(100)
     if r < int(errorThresh):
         abort(500)
