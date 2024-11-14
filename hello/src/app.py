@@ -7,7 +7,7 @@ from datetime import datetime
 import logging
 
 log = logging.getLogger('werkzeug')
-log.setLevel(logging.INFO)
+log.setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 
@@ -16,13 +16,11 @@ errorThresh = os.environ.get('ERROR_THRESH', "50")
 
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
-    log.info(timeString + " - [frontend: " + shard + "] - " + message)
-
-logit("errorThresh: " + errorThresh)
+    log.debug(timeString + " - [frontend: " + shard + "] - " + message)
 
 @app.route("/")
 def hello():
-    
+    logit("errorThresh: " + errorThresh)
     r = randrange(100)
     if r < int(errorThresh):
         abort(500)
@@ -32,3 +30,4 @@ def hello():
 @app.route("/hash")
 def get_hash():
     return "<p>1234</p>"
+
