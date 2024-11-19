@@ -12,10 +12,11 @@ log.setLevel(logging.DEBUG)
 
 app = Flask(__name__)
 
-shard       = os.environ.get('SHARD', "na")
-errorThresh = os.environ.get('ERROR_THRESH', "50")
-weatherHost = os.environ.get('WEATHER_HOST', "weather")
-weatherPort = os.environ.get('WEATHER_PORT', "5100")
+shard         = os.environ.get('SHARD', "na")
+errorThresh   = os.environ.get('ERROR_THRESH', "50")
+weatherThresh = os.environ.get('WEATHER_THRESH', "50")
+weatherHost   = os.environ.get('WEATHER_HOST', "weather")
+weatherPort   = os.environ.get('WEATHER_PORT', "5100")
 
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
@@ -29,7 +30,7 @@ def hello():
         abort(500)
     else: 
         rr = randrange(100)
-        if rr < int(errorThresh):
+        if rr < int(weatherThresh):
             try:
                 resWeather = requests.get('http://weather:5100/weatherforecast')
                 print(resWeather)

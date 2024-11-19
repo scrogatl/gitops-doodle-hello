@@ -39,7 +39,9 @@ spec:
         - name: DOODLE-VERSION
           value: "V0.99.4"
         - name: ERROR_THRESH
-          value: "40"
+          value: "1"
+        - name: WEATHER_THRESH
+          value: "50"
         ports:
         - containerPort: 5001
           name: application
