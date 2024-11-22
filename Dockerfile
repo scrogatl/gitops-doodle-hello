@@ -19,4 +19,5 @@ EXPOSE 5001
 
 ENV NEW_RELIC_APP_NAME=doodle-hello
 
-CMD newrelic-admin run-program flask run --debugger --host=0.0.0.0 -p 5001
+# CMD newrelic-admin run-program flask run --debugger --host=0.0.0.0 -p 5001
+CMD flask run --debugger --host=0.0.0.0 -p 5001
