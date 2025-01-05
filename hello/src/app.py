@@ -20,7 +20,7 @@ weatherPort   = os.environ.get('WEATHER_PORT', "5100")
 
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
-    log.debug(timeString + " - [frontend: " + shard + "] - " + message)
+    log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
 @app.route("/")
 def hello():
