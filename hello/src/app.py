@@ -32,7 +32,10 @@ def hello():
         rr = randrange(100)
         if rr < int(weatherThresh):
             try:
-                resWeather = requests.get('http://weather:5100/weatherforecast')
+                # resWeather = requests.get('http://weather:5100/weatherforecast')
+                logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                print('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
                 print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
