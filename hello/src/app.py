@@ -15,7 +15,7 @@ app = Flask(__name__)
 shard         = os.environ.get('SHARD', "na")
 errorThresh   = os.environ.get('ERROR_THRESH', "50")
 weatherThresh = os.environ.get('WEATHER_THRESH', "50")
-weatherHost   = os.environ.get('WEATHER_HOST', "weather")
+weatherHost   = os.environ.get('WEATHER_HOST', "localhost")
 weatherPort   = os.environ.get('WEATHER_PORT', "5100")
 
 def logit(message):
