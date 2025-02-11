@@ -2,4 +2,5 @@ gke*
 venv*
 __pycache__
 .DS_STORE
+.DS_Store
 *.BAK
