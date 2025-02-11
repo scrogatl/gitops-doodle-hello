@@ -1,7 +1,8 @@
 from flask import Flask, abort
 import requests
 from flask import request
-from time import sleep
+# from time import sleep
+import time
 import os
 from random import randrange
 from datetime import datetime
@@ -27,9 +28,12 @@ def hello():
     logit("errorThresh: " + errorThresh)
     r = randrange(100)
     if r < int(errorThresh):
+        logit("ABORT!")
         abort(500)
     else: 
         rr = randrange(100)
+        logit('Weather_thresh: ' + weatherThresh)
+        print('Weather_thresh: ' + weatherThresh)
         if rr < int(weatherThresh):
             try:
                 # resWeather = requests.get('http://weather:5100/weatherforecast')
@@ -52,5 +56,5 @@ def hello():
 
 @app.route("/hash")
 def get_hash():
-    return "<p>1234</p>"
-
+    time.sleep( 50 )
+    return str(randrange(100))
