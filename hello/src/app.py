@@ -1,12 +1,17 @@
-from flask import Flask, abort
+from flask import Flask, abort, request
 import requests
-from flask import request
-# from time import sleep
 import time
 import os
 from random import randrange
 from datetime import datetime
 import logging
+
+# from opentelemetry import trace
+# from opentelemetry.sdk.trace import TracerProvider
+# from opentelemetry.sdk.trace.export import SimpleSpanProcessor, ConsoleSpanExporter
+# from opentelemetry.trace import format_trace_id
+
+
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
@@ -19,13 +24,28 @@ weatherThresh = os.environ.get('WEATHER_THRESH', "50")
 weatherHost   = os.environ.get('WEATHER_HOST', "localhost")
 weatherPort   = os.environ.get('W_PORT', "5100")
 
+
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
 @app.route("/")
 def hello():
+    for header, value in request.headers.items():
+        print(f"{header}: {value}")
+    
     logit("errorThresh: " + errorThresh)
+
+    # current_span = trace.get_current_span()
+    # trace_id = format_trace_id(current_span.get_span_context().trace_id)
+    # span_id = current_span.get_span_context().span_id
+
+    # print(f"Current Trace ID: {trace_id}")
+    # print(f"Current Span ID: {span_id}")
+    
+    # outside_span = trace.get_current_span()
+    # print(f"Outside Span ID: {outside_span.get_span_context().span_id}")
+    
     r = randrange(100)
     if r < int(errorThresh):
         logit("ABORT!")
