@@ -2,33 +2,39 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   labels:
-    application: helloworld
-    service: hello
-    version: blue
-    shard: blue
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/instance: hello-xyzz
+    app.kubernetes.io/version: "0.9.1"
+    app.kubernetes.io/component: service
+    app.kubernetes.io/part-of: helloworld
+    app.kubernetes.io/managed-by: kubectl
   name: hello
   namespace: supreme-doodle
 spec:
   replicas: 1
   selector:
     matchLabels:
-      application: helloworld
-      service: hello
-      version: blue
-      shard: blue
+      app.kubernetes.io/name: hello
+      app.kubernetes.io/instance: hello-xyzz
+      app.kubernetes.io/version: "0.9.1"
+      app.kubernetes.io/component: service
+      app.kubernetes.io/part-of: helloworld
+      app.kubernetes.io/managed-by: kubectl
   template:
     metadata:
       labels:
-        application: helloworld
-        service: hello
-        version: blue
-        shard: blue
+        app.kubernetes.io/name: hello
+        app.kubernetes.io/instance: hello-xyzz
+        app.kubernetes.io/version: "0.9.1"
+        app.kubernetes.io/component: service
+        app.kubernetes.io/part-of: helloworld
+        app.kubernetes.io/managed-by: kubectl
     spec:
       containers:
       - name: hello
-        # image: public.ecr.aws/z4m0n1r4/hello
         image: ghcr.io/scrogatl/doodle-hello:latest
         imagePullPolicy: Always
+        command: ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", "-p 5001"]
         env:
         - name: SHARD
           value: "blue"
@@ -36,8 +42,9 @@ spec:
           value: "1"
         - name: NEW_RELIC_LICENSE_KEY
           value:  "{{ .Values.nr_key }}"
-        - name: DOODLE-VERSION
-          value: "V0.99.4"
+        - name: NEW_RELIC_APP_NAME
+          vaue: "doodle-hello"
+
         - name: ERROR_THRESH
           value: "1"
         - name: WEATHER_HOST
@@ -54,10 +61,22 @@ kind: Service
 metadata:
   name: hello
   namespace: supreme-doodle
+  labels:
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/instance: hello-xyzz
+    app.kubernetes.io/version: "0.9.1"
+    app.kubernetes.io/component: service
+    app.kubernetes.io/part-of: helloworld
+    app.kubernetes.io/managed-by: kubectl
+
 spec: 
   selector:
-    application: helloworld
-    service: hello  
+    app.kubernetes.io/name: hello
+    app.kubernetes.io/instance: hello-xyzz
+    app.kubernetes.io/version: "0.9.1"
+    app.kubernetes.io/component: service
+    app.kubernetes.io/part-of: helloworld
+    app.kubernetes.io/managed-by: kubectl
   type: ClusterIP
   ports:
   - name: http
