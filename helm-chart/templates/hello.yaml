@@ -7,7 +7,7 @@ metadata:
     app.kubernetes.io/version: "0.9.1"
     app.kubernetes.io/component: service
     app.kubernetes.io/part-of: helloworld
-    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/managed-by: helm
   name: hello
   namespace: supreme-doodle
 spec:
@@ -19,7 +19,7 @@ spec:
       app.kubernetes.io/version: "0.9.1"
       app.kubernetes.io/component: service
       app.kubernetes.io/part-of: helloworld
-      app.kubernetes.io/managed-by: kubectl
+      app.kubernetes.io/managed-by: helm
   template:
     metadata:
       labels:
@@ -28,23 +28,22 @@ spec:
         app.kubernetes.io/version: "0.9.1"
         app.kubernetes.io/component: service
         app.kubernetes.io/part-of: helloworld
-        app.kubernetes.io/managed-by: kubectl
+        app.kubernetes.io/managed-by: helm
     spec:
       containers:
       - name: hello
         image: ghcr.io/scrogatl/doodle-hello:latest
         imagePullPolicy: Always
-        command: ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", "-p 5001"]
+        # command: ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", "-p 5001"]
         env:
         - name: SHARD
           value: "blue"
         - name: PYTHONUNBUFFERED
           value: "1"
-        - name: NEW_RELIC_LICENSE_KEY
-          value:  "{{ .Values.nr_key }}"
-        - name: NEW_RELIC_APP_NAME
-          vaue: "doodle-hello"
-
+        # - name: NEW_RELIC_LICENSE_KEY
+        #   value:  "{{ .Values.nr_key }}"
+        # - name: NEW_RELIC_APP_NAME
+        #   vaue: "doodle-hello"
         - name: ERROR_THRESH
           value: "1"
         - name: WEATHER_HOST
@@ -67,7 +66,7 @@ metadata:
     app.kubernetes.io/version: "0.9.1"
     app.kubernetes.io/component: service
     app.kubernetes.io/part-of: helloworld
-    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/managed-by: helm
 
 spec: 
   selector:
@@ -76,7 +75,7 @@ spec:
     app.kubernetes.io/version: "0.9.1"
     app.kubernetes.io/component: service
     app.kubernetes.io/part-of: helloworld
-    app.kubernetes.io/managed-by: kubectl
+    app.kubernetes.io/managed-by: helm
   type: ClusterIP
   ports:
   - name: http
