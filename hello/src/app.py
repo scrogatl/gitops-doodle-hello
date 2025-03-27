@@ -60,7 +60,7 @@ def hello():
                 # logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
                 # print('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
                 # resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
-                weatherURL = 'http://' + weatherHost + ':' + weatherPort
+                weatherURL = 'https://' + weatherHost + ':' + weatherPort
                 resWeather = requests.get(weatherURL)
                 print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
