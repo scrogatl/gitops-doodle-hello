@@ -43,7 +43,7 @@ def hello():
     # print(f"Current Trace ID: {trace_id}")
     # print(f"Current Span ID: {span_id}")
     
-    # outside_span = trace.get_current_span()
+    # outside_span = trace.get_current_span() + '/w
     # print(f"Outside Span ID: {outside_span.get_span_context().span_id}")
     
     r = randrange(100)
@@ -58,9 +58,9 @@ def hello():
             try:
                 # resWeather = requests.get('http://weather:5100/weatherforecast')
                 # logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
-                # print('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                # print('Weather can be found at: http://' + weatherHost + ':' + weatherPorteatherforecast')
                 # resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
-                weatherURL = 'https://' + weatherHost + ':' + weatherPort
+                weatherURL = 'https://' + weatherHost + ':' + weatherPort + '/weatherforecast'
                 resWeather = requests.get(weatherURL)
                 print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
