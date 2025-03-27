@@ -57,9 +57,11 @@ def hello():
         if rr < int(weatherThresh):
             try:
                 # resWeather = requests.get('http://weather:5100/weatherforecast')
-                logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
-                print('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
-                resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                # logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                # print('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                # resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
+                weatherURL = 'http://' + weatherHost + ':' + weatherPort
+                resWeather = requests.get(weatherURL)
                 print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
