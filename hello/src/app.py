@@ -56,6 +56,13 @@ def hello():
         rr = randrange(100)
         logit('Weather_thresh: ' + weatherThresh)
         if rr < int(weatherThresh):
+            # Define your custom headers as a dictionary
+            custom_headers = {
+             "Authorization": "Bearer your_access_token",
+             "User-Agent": "MyCustomApp/1.0",
+             "X-Custom-Header": "SomeValue"
+            }
+
             try:
                 # resWeather = requests.get('http://weather:5100/weatherforecast')
                 # logit('Weather can be found at: http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
@@ -63,7 +70,7 @@ def hello():
                 # resWeather = requests.get('http://' + weatherHost + ':' + weatherPort + '/weatherforecast')
                 weatherURL = 'http://' + weatherHost + ':' + weatherPort + '/weatherforecast'
                 logit('Weather can be found at: ' + weatherURL)
-                resWeather = requests.get(weatherURL)
+                resWeather = requests.get(weatherURL, headers=custom_headers)
                 print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
