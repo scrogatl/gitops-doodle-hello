@@ -64,7 +64,7 @@ def hello():
                 weatherURL = 'http://' + weatherHost + ':' + weatherPort + '/weatherforecast'
                 logit('Weather can be found at: ' + weatherURL)
                 resWeather = requests.get(weatherURL)
-                logit(resWeather)
+                print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
                 return resWeather.text
