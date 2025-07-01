@@ -31,8 +31,9 @@ def logit(message):
 
 @app.route("/")
 def hello():
+    logit("---- BEGIN -----")
     for header, value in request.headers.items():
-        print(f"{header}: {value}")
+        logit(f"{header}: {value}")
     
     logit("errorThresh: " + errorThresh)
 
