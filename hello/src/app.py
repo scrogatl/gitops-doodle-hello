@@ -31,9 +31,10 @@ def logit(message):
 
 @app.route("/")
 def hello():
-    logit("---- BEGIN -----")
+    logit("---- HEADERS BEGIN -----")
     for header, value in request.headers.items():
         logit(f"{header}: {value}")
+    logit("---- HEADERS END -----")
     
     logit("errorThresh: " + errorThresh)
 
@@ -54,7 +55,6 @@ def hello():
     else: 
         rr = randrange(100)
         logit('Weather_thresh: ' + weatherThresh)
-        print('Weather_thresh: ' + weatherThresh)
         if rr < int(weatherThresh):
             try:
                 # resWeather = requests.get('http://weather:5100/weatherforecast')
@@ -64,13 +64,13 @@ def hello():
                 weatherURL = 'http://' + weatherHost + ':' + weatherPort + '/weatherforecast'
                 logit('Weather can be found at: ' + weatherURL)
                 resWeather = requests.get(weatherURL)
-                print(resWeather)
+                logit(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
                 return resWeather.text
             except Exception as e:
                 logit(str(e))
-                print("type of exception:")
+                logit("type of exception:")
                 print(type(e))
                 print(e.errno)
                 print("e", e)
