@@ -59,7 +59,7 @@ def hello():
             # Define your custom headers as a dictionary
             custom_headers = {
              "Authorization": "Bearer your_access_token",
-             "User-Agent": "MyCustomApp/1.0",
+             "User-Agent": "DoodleHello/1.0",
              "X-Custom-Header": "SomeValue"
             }
 
