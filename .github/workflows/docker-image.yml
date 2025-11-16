@@ -11,7 +11,7 @@ on:
 
 
 jobs:
-  build-push-hello`:
+  build-push-hello:
     runs-on: ubuntu-latest
     steps:
       - name: Docker meta
@@ -20,7 +20,7 @@ jobs:
         with:
           # list of Docker images to use as base name for tags
           images: |
-            ghcr.io/scrogatl/doodle-hello`
+            ghcr.io/scrogatl/doodle-hello
           # generate Docker tags based on the following events/attributes
           tags: |
             type=raw,value={{branch}}
