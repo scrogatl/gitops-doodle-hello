@@ -13,24 +13,10 @@ WORKDIR /hello
 COPY hello/requirements.txt /hello/requirements.txt
 RUN pip3 install -r requirements.txt
 
-# ENV NEW_RELIC_APP_NAME=doodle-hello
-# ENV OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
-# ENV OTEL_SERVICE_NAME=hello-otel
-# ENV OTEL_RESOURCE_ATTRIBUTES=service.instance.id=43cfc6fa-e52c-4434-86ba-ae1084a709bd
-# ENV OTEL_PYTHON_LOGGING_AUTO_INSTRUMENTATION_ENABLED=true
-# ENV OTEL_EXPORTER_OTLP_ENDPOINT=https://otlp.nr-data.net
-# ENV OTEL_ATTRIBUTE_VALUE_LENGTH_LIMIT=4095
-# ENV OTEL_EXPORTER_OTLP_COMPRESSION=gzip
-# ENV OTEL_EXPORTER_OTLP_PROTOCOL=http/protobuf 
-# ENV OTEL_EXPORTER_OTLP_METRICS_TEMPORALITY_PREFERENCE=delta
-
-# RUN opentelemetry-bootstrap -a install
+ENV NEW_RELIC_APP_NAME=doodle-hello
 
 COPY hello/src/ /hello
 
 EXPOSE 5001
 
-CMD flask run --debugger --host=0.0.0.0 -p 5001
-# CMD newrelic-admin run-program flask run --debugger --host=0.0.0.0 -p 5001
-# CMD opentelemetry-instrument --logs_exporter otlp flask run --debugger --host=0.0.0.0 -p 5001
-
+CMD ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", " -p 5001"]
