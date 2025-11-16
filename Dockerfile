@@ -19,4 +19,4 @@ COPY hello/src/ /hello
 
 EXPOSE 5001
 
-CMD ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", " -p 5001"]
+CMD ["newrelic-admin", "run-program", "flask", "run", "--host=0.0.0.0", "-p 5001"]
