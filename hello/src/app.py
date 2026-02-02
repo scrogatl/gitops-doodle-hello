@@ -71,7 +71,7 @@ def hello():
                 weatherURL = 'http://' + weatherHost + ':' + weatherPort + '/weatherforecast'
                 logit('Weather can be found at: ' + weatherURL)
                 resWeather = requests.get(weatherURL, headers=custom_headers)
-                print(resWeather)
+                # print(resWeather)
                 logit("resWeather.text: " + resWeather.text)
                 logit("resWeather.status_code: " + str(resWeather.status_code))
                 return resWeather.text
@@ -83,6 +83,7 @@ def hello():
                 print("e", e)
                 return str(e)
         else:
+            logit("returning Hello")
             return "Hello (" + shard + ")" 
 
 @app.route("/hash")
