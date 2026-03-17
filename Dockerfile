@@ -1,14 +1,8 @@
-FROM python:3.10-slim-bullseye AS base
-
-FROM base AS builder
-
-RUN apt update && apt install python3-pip -y
-RUN apt install bash -y
-RUN apt autoremove
-
-FROM base
+FROM python:3.10-slim-bullseye 
 
 WORKDIR /hello
+
+ENV NEW_RELIC_APP_NAME=doodle-hello
 
 COPY hello/requirements.txt /hello/requirements.txt
 RUN pip3 install -r requirements.txt
