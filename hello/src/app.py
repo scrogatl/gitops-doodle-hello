@@ -6,13 +6,6 @@ from random import randrange
 from datetime import datetime
 import logging
 
-# from opentelemetry import trace
-# from opentelemetry.sdk.trace import TracerProvider
-# from opentelemetry.sdk.trace.export import SimpleSpanProcessor, ConsoleSpanExporter
-# from opentelemetry.trace import format_trace_id
-
-
-
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
 
