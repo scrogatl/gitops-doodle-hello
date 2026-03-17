@@ -2,7 +2,7 @@ FROM python:3.10-slim-bullseye
 
 WORKDIR /hello
 
-ENV NEW_RELIC_APP_NAME=doodle-hello
+# ENV NEW_RELIC_APP_NAME=doodle-hello
 
 COPY hello/requirements.txt /hello/requirements.txt
 RUN pip3 install -r requirements.txt
