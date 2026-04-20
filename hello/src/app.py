@@ -85,7 +85,7 @@ def hello():
         else:
             logit("returning Hello")
             return encabulation() + "(" + shard + ")" 
-            return "Hello (" + shard + ")" 
+            # return "Hello (" + shard + ")" 
 
 @app.route("/hash")
 def get_hash():
@@ -98,7 +98,7 @@ def encabulation():
     return turbo()
 
 def turbo():
-    logit("turbing...")
-    time.sleep( 1000 )
+    logit("turbo-ing...")
+    time.sleep( 10 )
     return "Enabulated Hello"
     
