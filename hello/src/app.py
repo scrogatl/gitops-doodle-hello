@@ -1,4 +1,5 @@
-from flask import Flask, abort, request
+# from flask import Flask, abort, request
+from fastapi import FastAPI, HTTPException
 import requests
 import time
 import os
@@ -6,17 +7,11 @@ from random import randrange
 from datetime import datetime
 import logging
 
-# from opentelemetry import trace
-# from opentelemetry.sdk.trace import TracerProvider
-# from opentelemetry.sdk.trace.export import SimpleSpanProcessor, ConsoleSpanExporter
-# from opentelemetry.trace import format_trace_id
-
-
-
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
 
-app = Flask(__name__)
+# app = Flask(__name__)
+app = FastAPI()
 
 shard         = os.environ.get('SHARD', "na")
 errorThresh   = os.environ.get('ERROR_THRESH', "50")
@@ -29,12 +24,12 @@ def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
-@app.route("/")
+@app.get("/")
 def hello():
-    logit("---- HEADERS BEGIN -----")
-    for header, value in request.headers.items():
-        logit(f"{header}: {value}")
-    logit("---- HEADERS END -----")
+    # logit("---- HEADERS BEGIN -----")
+    # for header, value in requests.headers.items():
+    #     logit(f"{header}: {value}")
+    # logit("---- HEADERS END -----")
     
     logit("errorThresh: " + errorThresh)
 
@@ -51,7 +46,8 @@ def hello():
     r = randrange(100)
     if r < int(errorThresh):
         logit("ABORT!")
-        abort(500)
+        raise HTTPException(status_code=501, detail="Encabulation Error")
+        # abort(500)
     else: 
         rr = randrange(100)
         logit('Weather_thresh: ' + weatherThresh)
@@ -87,7 +83,7 @@ def hello():
             return encabulation() + "(" + shard + ")" 
             # return "Hello (" + shard + ")" 
 
-@app.route("/hash")
+# @app.route("/hash")
 def get_hash():
     time.sleep( 50 )
     return str(randrange(100))
