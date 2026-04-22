@@ -99,6 +99,6 @@ def encabulation():
 
 def turbo():
     logit("turbo-ing...")
-    time.sleep( 10 )
+    time.sleep( 1 )
     return "Enabulated Hello"
     
