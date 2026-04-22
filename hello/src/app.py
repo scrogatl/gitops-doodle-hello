@@ -46,6 +46,7 @@ def hello():
     r = randrange(100)
     if r < int(errorThresh):
         logit("ABORT!")
+        logit("Encabulation error detected")
         raise HTTPException(status_code=501, detail="Encabulation Error")
         # abort(500)
     else: 
@@ -83,7 +84,7 @@ def hello():
             return encabulation() + "(" + shard + ")" 
             # return "Hello (" + shard + ")" 
 
-# @app.route("/hash")
+@app.get("/hash")
 def get_hash():
     time.sleep( 50 )
     return str(randrange(100))

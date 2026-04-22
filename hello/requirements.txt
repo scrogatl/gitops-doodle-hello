@@ -2,3 +2,5 @@ fastapi
 requests
 opentelemetry-distro 
 opentelemetry-exporter-otlp
+opentelemetry-instrumentation-fastapi \
+
