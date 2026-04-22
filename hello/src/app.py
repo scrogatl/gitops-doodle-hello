@@ -6,6 +6,8 @@ import os
 from random import randrange
 from datetime import datetime
 import logging
+from opentelemetry import trace
+
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
@@ -19,12 +21,15 @@ weatherThresh = os.environ.get('WEATHER_THRESH', "50")
 weatherHost   = os.environ.get('WEATHER_HOST', "localhost")
 weatherPort   = os.environ.get('W_PORT', "5100")
 
+tracer = trace.get_tracer(__name__)
+
 
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
 @app.get("/")
+@tracer.start_as_current_span("parent_operation")
 def hello():
     # logit("---- HEADERS BEGIN -----")
     # for header, value in requests.headers.items():
@@ -89,7 +94,7 @@ def get_hash():
     time.sleep( 50 )
     return str(randrange(100))
 
-
+@tracer.start_as_current_span("child_operation")
 def encabulation():
     logit("enabulating...")
     return turbo()
