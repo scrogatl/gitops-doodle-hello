@@ -1,5 +1,6 @@
 # from flask import Flask, abort, request
 from fastapi import FastAPI, HTTPException
+import uuid
 import requests
 import time
 import os
@@ -89,10 +90,10 @@ def hello():
             return encabulation() + "(" + shard + ")" 
             # return "Hello (" + shard + ")" 
 
-@app.get("/hash")
-def get_hash():
-    time.sleep( 50 )
-    return str(randrange(100))
+@app.get("/get_uuid")
+def get_uuid():
+    time.sleep( 1 )
+    return str(uuid.uuid4())
 
 @tracer.start_as_current_span("child_operation")
 def encabulation():

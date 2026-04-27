@@ -1,5 +1,6 @@
 fastapi
 requests
+uuid
 opentelemetry-distro 
 opentelemetry-exporter-otlp
 opentelemetry-instrumentation-fastapi \
