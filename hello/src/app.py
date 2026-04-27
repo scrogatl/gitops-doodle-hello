@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 from flask import Flask, abort, request
+=======
+# from flask import Flask, abort, request
+from fastapi import FastAPI, HTTPException
+import uuid
+>>>>>>> af01a74 (added uuid generation)
 import requests
 import time
 import os
@@ -78,7 +84,17 @@ def hello():
         else:
             return "Hello (" + shard + ")" 
 
-@app.route("/hash")
-def get_hash():
-    time.sleep( 50 )
-    return str(randrange(100))
+@app.get("/get_uuid")
+def get_uuid():
+    time.sleep( 1 )
+    return str(uuid.uuid4())
+
+@tracer.start_as_current_span("child_operation")
+def encabulation():
+    logit("enabulating...")
+    return turbo()
+
+def turbo():
+    logit("turbo-ing...")
+    time.sleep( 1 )
+    return "Enabulated Hello"
