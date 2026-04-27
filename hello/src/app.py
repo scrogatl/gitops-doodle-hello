@@ -1,16 +1,13 @@
-<<<<<<< HEAD
 from flask import Flask, abort, request
-=======
-# from flask import Flask, abort, request
-from fastapi import FastAPI, HTTPException
 import uuid
->>>>>>> af01a74 (added uuid generation)
 import requests
 import time
 import os
 from random import randrange
 from datetime import datetime
 import logging
+from opentelemetry import trace
+
 
 log = logging.getLogger('werkzeug')
 log.setLevel(logging.DEBUG)
@@ -27,6 +24,9 @@ weatherPort   = os.environ.get('W_PORT', "5100")
 def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
+
+tracer = trace.get_tracer(__name__)
+
 
 @app.route("/")
 def hello():
