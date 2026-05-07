@@ -22,7 +22,7 @@ weatherThresh = os.environ.get('WEATHER_THRESH', "50")
 weatherHost   = os.environ.get('WEATHER_HOST', "localhost")
 weatherPort   = os.environ.get('W_PORT', "5100")
 
-tracer = trace.get_tracer(__name__)
+#tracer = trace.get_tracer(__name__)
 
 
 def logit(message):
@@ -30,7 +30,7 @@ def logit(message):
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
 @app.get("/")
-@tracer.start_as_current_span("parent_operation")
+#@tracer.start_as_current_span("parent_operation")
 def hello():
     # logit("---- HEADERS BEGIN -----")
     # for header, value in requests.headers.items():
@@ -95,7 +95,7 @@ def get_uuid():
     time.sleep( 1 )
     return str(uuid.uuid4())
 
-@tracer.start_as_current_span("child_operation")
+#@tracer.start_as_current_span("child_operation")
 def encabulation():
     logit("enabulating...")
     return turbo()
