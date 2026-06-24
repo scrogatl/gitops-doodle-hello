@@ -6,7 +6,7 @@ import os
 from random import randrange
 from datetime import datetime
 import logging
-from opentelemetry import trace
+#from opentelemetry import trace
 
 
 log = logging.getLogger('werkzeug')
@@ -25,7 +25,7 @@ def logit(message):
     timeString = datetime.now().strftime("%H:%M:%S.%f")[:-3]
     log.debug(timeString + " - [hello: " + shard + "] - " + message)
 
-tracer = trace.get_tracer(__name__)
+#tracer = trace.get_tracer(__name__)
 
 
 @app.route("/")
@@ -89,7 +89,7 @@ def get_uuid():
     time.sleep( 1 )
     return str(uuid.uuid4())
 
-@tracer.start_as_current_span("child_operation")
+#@tracer.start_as_current_span("child_operation")
 def encabulation():
     logit("enabulating...")
     return turbo()
