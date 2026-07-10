@@ -1,4 +1,5 @@
 from flask import Flask, abort, request
+import uuid
 import requests
 import time
 import os
@@ -87,11 +88,15 @@ def hello():
             return encabulation() + "(" + shard + ")" 
             # return "Hello (" + shard + ")" 
 
+@app.get("/get_uuid")
+def get_uuid():
+    time.sleep( 1 )
+    return str(uuid.uuid4())
+
 @app.route("/hash")
 def get_hash():
     time.sleep( 50 )
     return str(randrange(100))
-
 
 def encabulation():
     logit("enabulating...")
