@@ -1,2 +1,7 @@
--r ../hello/requirements.txt
+# Kept in sync manually with ../hello/requirements.txt - can't use `-r
+# ../hello/requirements.txt` here because Azure's remote build only
+# packages this directory, not sibling repo folders.
+flask
+requests
+uuid
 azure-functions
