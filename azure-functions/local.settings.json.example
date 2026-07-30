@@ -1,0 +1,12 @@
+{
+  "IsEncrypted": false,
+  "Values": {
+    "AzureWebJobsStorage": "",
+    "FUNCTIONS_WORKER_RUNTIME": "python",
+    "WEATHER_HOST": "localhost",
+    "W_PORT": "5100",
+    "ERROR_THRESH": "50",
+    "WEATHER_THRESH": "50",
+    "SHARD": "azure-fn"
+  }
+}
