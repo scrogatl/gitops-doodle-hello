@@ -7,6 +7,8 @@
     "W_PORT": "5100",
     "ERROR_THRESH": "50",
     "WEATHER_THRESH": "50",
-    "SHARD": "azure-fn"
+    "SHARD": "azure-fn",
+    "NEW_RELIC_LICENSE_KEY": "<your-license-key>",
+    "NEW_RELIC_APP_NAME": "doodle-hello-azure-fn"
   }
 }
