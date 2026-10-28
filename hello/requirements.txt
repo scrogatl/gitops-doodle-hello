@@ -1,5 +1,3 @@
 flask
 requests
-opentelemetry-distro 
-opentelemetry-exporter-otlp
-opentelemetry-instrumentation-flask
+newrelic
