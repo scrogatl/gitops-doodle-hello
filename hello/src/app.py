@@ -18,7 +18,7 @@ weatherHost   = os.environ.get('WEATHER_HOST', "localhost")
 weatherPort   = os.environ.get('W_PORT', "5100")
 
 # Knobs for the artificial slowness (seconds) and optional request-header logging.
-turboSleep    = float(os.environ.get('TURBO_SLEEP', "10"))
+turboSleep    = float(os.environ.get('TURBO_SLEEP', "1"))
 hashSleep     = float(os.environ.get('HASH_SLEEP', "50"))
 logHeaders    = os.environ.get('LOG_HEADERS', "true").lower() == "true"
 
